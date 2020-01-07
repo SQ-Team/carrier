@@ -4,6 +4,10 @@ cc.Class({
   extends: cc.Component,
 
   properties: {
+    targetNode: {
+      type: cc.Node,
+      default: null,
+    },
     direction: 0, // 方向
   },
   // onLoad () {},
@@ -18,7 +22,6 @@ cc.Class({
   },
 
   onPlayerJump() {
-    console.log('player jump');
     let v = this.body.linearVelocity; // 获取当前刚体的速度
     v.y += 300;
     this.body.linearVelocity = v;
@@ -26,42 +29,44 @@ cc.Class({
 
   onKeyDown(e) {
     switch(e.keyCode) {
-      case cc.macro.KEY.up:
-      case cc.macro.KEY.space:
-        this.onPlayerJump();
-        break;
-      case cc.macro.KEY.left:
-        this.direction = directionMap.LEFT;
-        break;
-      case cc.macro.KEY.right:
-        this.direction = directionMap.RIGHT;
-        break;
-      default:
-        break;
+    case cc.macro.KEY.up:
+    case cc.macro.KEY.space:
+      this.onPlayerJump();
+      break;
+    case cc.macro.KEY.left:
+      this.direction = directionMap.LEFT;
+      break;
+    case cc.macro.KEY.right:
+      this.direction = directionMap.RIGHT;
+      break;
+    default:
+      break;
     }
   },
 
   onPlayerWalk(dir) {
     let v = this.body.linearVelocity; // 获取当前刚体的速度
-    v.x = 100 * dir;
+    v.x = 200 * dir;
     this.body.linearVelocity = v;
     this.node.scaleX =  dir ? dir : 1;
   },
 
   onKeyUp(e) {
     switch(e.keyCode) {
-      case cc.macro.KEY.up:
-      case cc.macro.KEY.space:
-      case cc.macro.KEY.left:
-      case cc.macro.KEY.right:
-      default:
-        this.direction = directionMap.NONE;
-        break;
+    case cc.macro.KEY.up:
+    case cc.macro.KEY.space:
+    case cc.macro.KEY.left:
+    case cc.macro.KEY.right:
+    default:
+      this.direction = directionMap.NONE;
+      break;
     }
   },
 
   update (dt) {
-    if (this.direction !== directionMap.NONE) {
+    let player_pos = this.node.convertToWorldSpaceAR(cc.v2(0, 0)); // 当前目标坐标（0，0）转换到世界坐标
+    let camera_pos = this.targetNode.convertToWorldSpaceAR(cc.v2(0, 0));
+    if (this.direction !== directionMap.NONE && Math.floor(player_pos.x) >= Math.floor(camera_pos.x) - cc.winSize.width / 2) {
       this.onPlayerWalk(this.direction);
     }
   },
