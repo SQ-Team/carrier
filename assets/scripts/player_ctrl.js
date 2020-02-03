@@ -4,10 +4,10 @@ cc.Class({
   extends: cc.Component,
 
   properties: {
-    targetNode: {
-      type: cc.Node,
-      default: null,
-    },
+    // targetNode: {
+    //   type: cc.Node,
+    //   default: null,
+    // },
     direction: 0, // 方向
   },
   // onLoad () {},
@@ -46,7 +46,7 @@ cc.Class({
 
   onPlayerWalk(dir) {
     let v = this.body.linearVelocity; // 获取当前刚体的速度
-    v.x = 200 * dir;
+    v.x = 100 * dir;
     this.body.linearVelocity = v;
     this.node.scaleX =  dir ? dir : 1;
   },
@@ -64,10 +64,10 @@ cc.Class({
   },
 
   update (dt) {
-    let player_pos = this.node.convertToWorldSpaceAR(cc.v2(0, 0)); // 当前目标坐标（0，0）转换到世界坐标
-    let camera_pos = this.targetNode.convertToWorldSpaceAR(cc.v2(0, 0));
-    if (this.direction !== directionMap.NONE && Math.floor(player_pos.x) >= Math.floor(camera_pos.x) - cc.winSize.width / 2) {
+    // let player_pos = this.node.convertToWorldSpaceAR(cc.v2(0, 0)); // 当前目标坐标（0，0）转换到世界坐标
+    // let camera_pos = this.targetNode.convertToWorldSpaceAR(cc.v2(0, 0));
+    // if (this.direction !== directionMap.NONE && Math.floor(player_pos.x) >= Math.floor(camera_pos.x) - cc.winSize.width / 2) {
       this.onPlayerWalk(this.direction);
-    }
+    // }
   },
 });
