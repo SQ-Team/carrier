@@ -35,6 +35,9 @@ cc.Class({
     }
     // 重力加速度的配置
     cc.director.getPhysicsManager().gravity = this.gravity;
+
+    // 个人添加 限制帧率
+    cc.game.setFrameRate(30);
   },
 
   // called every frame, uncomment this function to activate update callback

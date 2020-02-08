@@ -5,15 +5,21 @@ cc.Class({
     targetNode: {
       type: cc.Node,
       default: null,
-    },
+    }
   },
 
   // onLoad () {},
 
-  start () {
-    cc.director.preloadScene('restaurant');
-    console.log(this.node);
-  },
+    start () {
+        this.initConfig();
+        cc.director.preloadScene('restaurant');
+        console.log(this.node);
+    },
+
+    initConfig() {
+        window.cfg.mission = false;
+        window.cfg.currentLevel = '';
+    },
 
   update (dt) {
     let player_pos = this.targetNode.convertToWorldSpaceAR(cc.v2(0, 0)); // 当前目标坐标（0，0）转换到世界坐标

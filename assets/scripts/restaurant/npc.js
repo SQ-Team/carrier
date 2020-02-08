@@ -6,10 +6,6 @@ cc.Class({
             type: cc.Node,
             default: null,
         },
-        labelNode: {
-            type: cc.Node,
-            default: null
-        },
         playCount: 1
     },
 
@@ -27,13 +23,6 @@ cc.Class({
         v.x = 700;
         this.body.linearVelocity = v;
         this.node.scaleX =  1;
-      },
-
-    // 只在两个碰撞体开始接触时被调用一次
-    onBeginContact(contact, selfCollider, otherCollider) {
-        console.log('contact: ', contact);
-        console.log('selfCollider: ', selfCollider);
-        console.log('otherCollider: ', otherCollider);
     },
 
     update (dt) {
