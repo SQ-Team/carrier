@@ -1,35 +1,36 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true
+  "env": {
+    "browser": true,
+    "es6": true
   },
-  'extends': 'eslint:recommended',
-  'globals': {
-    'cc': true,
-    'module': true,
-    'Atomics': 'readonly',
-    'SharedArrayBuffer': 'readonly'
+  "extends": "eslint:recommended",
+  "globals": {
+    "cc": true,
+    "module": true,
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-  'parserOptions': {
-    'ecmaVersion': 2018,
-    'sourceType': 'module'
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
-  'rules': {
-    'indent': [
-      'error',
+  "rules": {
+    "indent": [
+      "error",
       2
     ],
-    'linebreak-style': [
-      'error',
-      'unix'
+    // "comma-dangle": ["error", "always"], // 强制要求末尾逗号
+    "linebreak-style": [
+      "error",
+      "unix"
     ],
-    'quotes': [
-      'error',
-      'single'
+    "quotes": [
+      "error",
+      "double"
     ],
-    'semi': [
-      'error',
-      'always'
+    "semi": [
+      "error",
+      "always"
     ]
   }
 };
