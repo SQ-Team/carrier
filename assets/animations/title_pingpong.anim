@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "title_pingpong",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 2,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 22,
+  "curveData": {
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 750
+        },
+        {
+          "frame": 1,
+          "value": 770
+        },
+        {
+          "frame": 2,
+          "value": 730
+        }
+      ]
+    }
+  },
+  "events": []
+}
