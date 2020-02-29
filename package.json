@@ -1,0 +1,24 @@
+{
+  "name": "graduation-design-game",
+  "version": "1.0.0",
+  "description": "## vscode编辑器请安装 EditorConfig for VS Code 插件",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengshiqi1998/graduation-design-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fengshiqi1998/graduation-design-game/issues"
+  },
+  "homepage": "https://github.com/fengshiqi1998/graduation-design-game#readme"
+}

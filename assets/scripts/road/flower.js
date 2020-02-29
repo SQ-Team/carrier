@@ -15,7 +15,7 @@ cc.Class({
     },
 
     start () {
-        // 获取节点上的刚体组件 
+        // 获取节点上的刚体组件
         this.body = this.getComponent(cc.RigidBody);
         console.log('flower start');
     },

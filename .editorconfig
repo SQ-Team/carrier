@@ -1,0 +1,20 @@
+# http://editorconfig.org
+root = true
+
+[*]
+# 文件编码
+charset = utf-8
+# 缩进类型
+indent_style = space
+# 缩进数量
+indent_size = 4
+# 换行格式符
+end_of_line = lf
+# 在文件最后插入一个空格
+insert_final_newline = true
+# 删除尾行空格
+trim_trailing_whitespace = true
+
+[*.md]
+insert_final_newline = false
+trim_trailing_whitespace = false
