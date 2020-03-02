@@ -16,11 +16,14 @@ cc.Class({
             y: 50
         };
         // 生成level button
-        for (var i=1;i<=window.cfg.levelNum;i++) {
+        for (var i=1;i<=window.cfg.levelNum+1;i++) {
             const newLevel = cc.instantiate(this.levelPrefab);
             newLevel.parent = this.node;
             newLevel.setPosition(defaultPosition.x, defaultPosition.y);
             const script = newLevel.getComponent('level');
+            if (i === window.cfg.levelNum+1) {
+                script.setLevel('test');
+            }
             script.setLevel(i);
             defaultPosition.x += 60;
             if (defaultPosition.x >= 300) {
