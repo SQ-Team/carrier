@@ -97,7 +97,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "d6655bbb-0418-4f09-a89b-d3cf7d9f6a2c"
+      "__uuid__": "1b3fcc2a-4dff-4107-8316-bf67d16f048b"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -166,7 +166,7 @@
     },
     "_angularVelocity": 0,
     "_fixedRotation": false,
-    "enabledContactListener": false,
+    "enabledContactListener": true,
     "bullet": false,
     "awakeOnLoad": true,
     "_id": ""

@@ -23,7 +23,9 @@ cc.Class({
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact(contact, selfCollider, otherCollider) {
         console.log('crash');
-        this.node.active = false;
+        setTimeout(() => {
+            this.node.active = false;
+        }, 1000)
     },
 
     update (dt) {
