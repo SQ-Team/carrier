@@ -13,14 +13,27 @@ cc.Class({
   },
   // onLoad () {},
 
-  start () {
-    this.direction = directionMap.NONE;
-    // 获取节点上的刚体组件
-    this.body = this.getComponent(cc.RigidBody);
-    // 监听事件
-    cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown.bind(this), this);
-    cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp.bind(this), this);
-  },
+    start () {
+        this.direction = directionMap.NONE;
+        // 获取节点上的刚体组件
+        this.body = this.getComponent(cc.RigidBody);
+        // 监听事件
+        this.addKeysListener();
+    },
+
+    onDestroy() {
+        this.removeKeysListener();
+    },
+
+    removeKeysListener() {
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+    },
+
+    addKeysListener() {
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown.bind(this), this);
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp.bind(this), this);
+    },
 
   onPlayerJump() {
     let v = this.body.linearVelocity; // 获取当前刚体的速度

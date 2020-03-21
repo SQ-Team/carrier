@@ -13,6 +13,10 @@ window.funcs = {
         window.cfg.missionCompleted = false;
         window.cfg.gameIsOver = true;
     },
+    missionAchieved() {
+        window.cfg.missionCompleted = true;
+        window.cfg.gameIsOver = true;
+    },
     levelInit() {
         window.cfg = {
             time: '', // 显示的时间

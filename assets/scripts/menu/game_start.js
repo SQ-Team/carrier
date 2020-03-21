@@ -8,6 +8,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        window.funcs.levelInit();
         if (window.cfg.gameInit) {
             this.node.setPosition(0, 0);
         } else {

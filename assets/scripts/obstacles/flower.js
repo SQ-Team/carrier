@@ -6,12 +6,16 @@ cc.Class({
             type: cc.Node,
             default: null,
         },
+        slider: {
+            type: cc.Node,
+            default: null
+        },
         playCount: 1
     },
 
     onLoad () {
         this.node.active = true;
-        console.log('flower onload')
+        console.log('flower onload');
     },
 
     start () {
@@ -22,6 +26,12 @@ cc.Class({
 
     // 只在两个碰撞体开始接触时被调用一次
     onBeginContact(contact, selfCollider, otherCollider) {
+        console.log(otherCollider);
+        if (otherCollider.node.name === 'player') {
+            console.log('hit');
+            window.funcs.missionFailed();
+            this.slider.getComponent('slider').animationPlay('failed');
+        }
         console.log('crash');
         setTimeout(() => {
             this.node.active = false;

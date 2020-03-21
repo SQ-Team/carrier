@@ -11,6 +11,10 @@ cc.Class({
             type: cc.Label,
             default: null
         },
+        slider: {
+            type: cc.Node,
+            default: null
+        },
 
         passingVelocity: 2 // 刷新时间
     },
@@ -30,7 +34,7 @@ cc.Class({
 
     timeFormat(time) {
         const date = new Date(time);
-        return `${date.getHours().toString().padStart('0', 2)}:${date.getMinutes().toString().padStart('0', 2)}`;
+        return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
     },
 
     getCurrentTime() {
@@ -51,8 +55,9 @@ cc.Class({
             this.time += 60 * 1000;
             this.setTime();
             if (this.time && this.time > this.endTime) {
+                console.log('time out');
                 window.funcs.missionFailed();
-                console.log(window.cfg.gameIsOver);
+                this.slider.getComponent('slider').animationPlay('failed');
             }
         }
         this.updateSecond += dt;
