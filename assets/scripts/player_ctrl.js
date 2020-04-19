@@ -8,18 +8,32 @@ cc.Class({
     //   type: cc.Node,
     //   default: null,
     // },
+    moving: false, // 移动中
     direction: 0, // 方向
   },
   // onLoad () {},
 
-  start () {
-    this.direction = directionMap.NONE;
-    // 获取节点上的刚体组件
-    this.body = this.getComponent(cc.RigidBody);
-    // 监听事件
-    cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown.bind(this), this);
-    cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp.bind(this), this);
-  },
+    start () {
+        this.direction = directionMap.NONE;
+        // 获取节点上的刚体组件
+        this.body = this.getComponent(cc.RigidBody);
+        // 监听事件
+        this.addKeysListener();
+    },
+
+    onDestroy() {
+        this.removeKeysListener();
+    },
+
+    removeKeysListener() {
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+    },
+
+    addKeysListener() {
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown.bind(this), this);
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp.bind(this), this);
+    },
 
   onPlayerJump() {
     let v = this.body.linearVelocity; // 获取当前刚体的速度
@@ -28,6 +42,7 @@ cc.Class({
   },
 
   onKeyDown(e) {
+    this.moving = true;
     switch(e.keyCode) {
     case cc.macro.KEY.up:
     case cc.macro.KEY.space:
@@ -45,18 +60,23 @@ cc.Class({
   },
 
   onPlayerWalk(dir) {
-    let v = this.body.linearVelocity; // 获取当前刚体的速度
-    v.x = 100 * dir;
-    this.body.linearVelocity = v;
+      if (this.moving) {
+        let v = this.body.linearVelocity; // 获取当前刚体的速度
+        v.x = 100 * dir;
+        this.body.linearVelocity = v;
+    }
     this.node.scaleX =  dir ? dir : 1;
   },
 
   onKeyUp(e) {
+    this.moving = false;
     switch(e.keyCode) {
-    case cc.macro.KEY.up:
-    case cc.macro.KEY.space:
     case cc.macro.KEY.left:
+        this.direction = directionMap.LEFT;
+        break;
     case cc.macro.KEY.right:
+        this.direction = directionMap.RIGHT;
+        break;
     default:
       this.direction = directionMap.NONE;
       break;

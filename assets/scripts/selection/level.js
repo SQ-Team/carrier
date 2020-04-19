@@ -18,6 +18,7 @@ cc.Class({
     },
 
     setSceneByLevel() {
+        window.cfg.mission = true;
         // 播放下拉框收回动画
         const animation = this.node.parent.getComponent(cc.Animation);
         animation.play('selection-up');
