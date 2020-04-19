@@ -20,28 +20,29 @@ cc.Class({
     },
 
     start () {},
+
     onLoad() {
         this.updateSecond = 0;
         this.time = this.getCurrentTime();
         this.setTime();
         this.setBrief(this.time, 5);
     },
-
+    // 设置任务简介
     setBrief(time, deadline) {
         this.endTime = time + deadline * 60 * 1000;
         this.briefLabel.string = `请在${this.timeFormat(this.endTime)}之前\n将外卖送至指定地点`;
     },
-
+    // 时间格式化
     timeFormat(time) {
         const date = new Date(time);
         return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
     },
-
+    // 获取当前时间
     getCurrentTime() {
         const time = new Date();
         return time.getTime();
     },
-
+    // 设置时间
     setTime() {
         const time = new Date(this.time);
         this.timeLabel.string = this.timeFormat(time);
@@ -49,7 +50,7 @@ cc.Class({
 
 
     update (dt) {
-        // 每30秒更新一次时间
+        // 每 passingVelocity 秒更新一次时间
         if (this.updateSecond > this.passingVelocity) {
             this.updateSecond = 0;
             this.time += 60 * 1000;

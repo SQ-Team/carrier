@@ -18,7 +18,8 @@ window.funcs = {
         window.cfg.gameIsOver = true;
     },
     levelInit() {
-        window.cfg = {
+        // 初始化时，gameInit的值需要保留
+        const newCfg  = {
             time: '', // 显示的时间
             directionMap: { LEFT: -1, RIGHT: 1, NONE: 0 }, // 玩家移动方向
             mission: false, // 是否获得任务
@@ -27,5 +28,6 @@ window.funcs = {
             levelNum: 5,
             currentLevel: ''
         };
+        Object.assign(window.cfg, newCfg);
     }
 }
