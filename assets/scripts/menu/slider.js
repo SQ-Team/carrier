@@ -9,11 +9,17 @@ cc.Class({
         backToCur: {
             type: cc.Node,
             default: null
+        },
+        canvasNode: {
+            type: cc.Node,
+            default: null
         }
     },
 
 
     onLoad () {
+        // 渐显(和下一个场景的 渐隐 组合成过渡效果)
+        this.canvasNode.getComponent("fade").fadeFromWhite(.5);
     },
 
     start () {
@@ -64,11 +70,12 @@ cc.Class({
 
     changeToHome() {
         console.log('scene change to game');
-        cc.director.loadScene('game');
+        // cc.director.loadScene('game');
+        this.canvasNode.getComponent("fade").fadeIntoWhite('game', .5);
     },
 
     update (dt) {
-        console.log(this.backToCur.active, window.cfg.gameIsOver);
+        // console.log(this.backToCur.active, window.cfg.gameIsOver);
         if (window.cfg.gameIsOver) {
             this.backToCur.active = false;
         } else {

@@ -5,7 +5,7 @@ window.cfg = {
     mission: false, // 是否获得任务
     missionCompleted: false, // 任务是否已经完成
     gameIsOver: false, // 游戏是否已经结束（无论成功）
-    levelNum: 5,
+    levelNum: 3,
     currentLevel: ''
 };
 window.funcs = {
@@ -25,7 +25,7 @@ window.funcs = {
             mission: false, // 是否获得任务
             missionCompleted: false, // 任务是否已经完成
             gameIsOver: false, // 游戏是否已经结束（无论成功）
-            levelNum: 5,
+            levelNum: 3,
             currentLevel: ''
         };
         Object.assign(window.cfg, newCfg);

@@ -3,7 +3,7 @@
   "_name": "title_pingpong",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 2,
+  "_duration": 1,
   "sample": 60,
   "speed": 1,
   "wrapMode": 22,
@@ -12,15 +12,11 @@
       "y": [
         {
           "frame": 0,
-          "value": 750
+          "value": 850
         },
         {
           "frame": 1,
-          "value": 770
-        },
-        {
-          "frame": 2,
-          "value": 730
+          "value": 800
         }
       ]
     }
