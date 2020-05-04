@@ -6,7 +6,8 @@ window.cfg = {
     missionCompleted: false, // 任务是否已经完成
     gameIsOver: false, // 游戏是否已经结束（无论成功）
     levelNum: 3,
-    currentLevel: ''
+    currentLevel: '',
+    isMute: false
 };
 window.funcs = {
     missionFailed() {
