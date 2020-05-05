@@ -13,6 +13,14 @@ cc.Class({
         canvasNode: {
             type: cc.Node,
             default: null
+        },
+        successAudio: {
+            type: cc.AudioClip,
+            default: null
+        },
+        failedAudio: {
+            type: cc.AudioClip,
+            default: null
         }
     },
 
@@ -27,10 +35,12 @@ cc.Class({
         this.animationPlayCount = 1;
         this.resultMap = {
             success: {
-                string: '外卖配送成功'
+                string: '外卖配送成功',
+                audio: this.successAudio
             },
             failed: {
-                string: '外卖配送失败'
+                string: '外卖配送失败',
+                audio: this.failedAudio
             },
             default: {
                 string: '您想要干什么'
@@ -55,6 +65,7 @@ cc.Class({
              console.log(this.resultMap[type].string);
              this.setContent(this.resultMap[type].string);
              console.log(this.content.string);
+             cc.audioEngine.play(this.resultMap[type].audio, false, 1);
              this.animation.play('slider_down');
              this.animationPlayCount --;
          }

@@ -15,6 +15,7 @@ cc.Class({
 
     onLoad () {
         this.node.active = true;
+        this.audioSource = this.node.getComponent(cc.AudioSource);
         console.log('flower onload');
     },
 
@@ -44,6 +45,10 @@ cc.Class({
         // console.log(target_pos, floor_pos);
         if (target_pos.x >= floor_pos.x - this.node.width && this.playCount) {
             this.body.type = cc.RigidBodyType.Dynamic;
+            if (!window.cfg.isMute) {
+                this.audioSource.play();
+            }
+            this.playCount--;
             this.body.linearVelocity = cc.v2(0, -500);
         }
     },

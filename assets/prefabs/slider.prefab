@@ -153,7 +153,7 @@
   },
   {
     "__type__": "cc.Label",
-    "_name": "",
+    "_name": "content<Label>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -385,7 +385,7 @@
   },
   {
     "__type__": "cc.Label",
-    "_name": "",
+    "_name": "Label<Label>",
     "_objFlags": 0,
     "node": {
       "__id__": 7
@@ -426,7 +426,7 @@
   },
   {
     "__type__": "cc.Sprite",
-    "_name": "",
+    "_name": "Background<Sprite>",
     "_objFlags": 0,
     "node": {
       "__id__": 6
@@ -792,7 +792,7 @@
   },
   {
     "__type__": "cc.Label",
-    "_name": "",
+    "_name": "Label<Label>",
     "_objFlags": 0,
     "node": {
       "__id__": 18
@@ -833,7 +833,7 @@
   },
   {
     "__type__": "cc.Sprite",
-    "_name": "",
+    "_name": "Background<Sprite>",
     "_objFlags": 0,
     "node": {
       "__id__": 17
@@ -1008,7 +1008,7 @@
   },
   {
     "__type__": "cc.Sprite",
-    "_name": "",
+    "_name": "slider<Sprite>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -1106,6 +1106,13 @@
     },
     "backToCur": {
       "__id__": 16
+    },
+    "canvasNode": null,
+    "successAudio": {
+      "__uuid__": "8a3a3eaa-fd64-4f7a-9128-967e1c885aa5"
+    },
+    "failedAudio": {
+      "__uuid__": "9d25bb7f-715f-4c61-a4aa-577eca67bab9"
     },
     "_id": ""
   },

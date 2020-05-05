@@ -14,10 +14,22 @@ cc.Class({
     },
 
     update (dt) {
+        if (!window.cfg.isMute) {
+            this.audioSource.mute = false;
+            if (!this.audioSource.isPlaying) {
+                this.audioSource.play();
+            }
+        }
         if (window.cfg.isMute) {
             this.audioSource.mute = true;
-        } else {
-            this.audioSource.mute = false;
+            this.audioSource.stop();
         }
+        // if (!window.cfg.isMute && !this.audioSource.isPlaying) {
+        //     this.audioSource.mute = false;
+        //     this.audioSource.play();
+        // } else {
+        //     this.audioSource.mute = true;
+        //     this.audioSource.stop();
+        // }
     },
 });
