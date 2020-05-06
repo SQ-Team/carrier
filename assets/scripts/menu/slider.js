@@ -32,6 +32,7 @@ cc.Class({
 
     start () {
         cc.director.preloadScene('game');
+        cc.director.preloadScene(window.cfg.currentLevel);
         this.animationPlayCount = 1;
         this.resultMap = {
             success: {
@@ -81,8 +82,13 @@ cc.Class({
 
     changeToHome() {
         console.log('scene change to game');
-        // cc.director.loadScene('game');
         this.canvasNode.getComponent("fade").fadeIntoWhite('game', .5);
+    },
+
+    restartGame() {
+        console.log('restart');
+        cc.director.loadScene(window.cfg.currentLevel);
+        // this.canvasNode.getComponent("fade").fadeIntoWhite(window.cfg.curentLevel, .5);
     },
 
     update (dt) {

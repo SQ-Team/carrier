@@ -13,12 +13,12 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "player",
+    "_name": "hatimie",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 3,
+    "_level": 2,
     "_components": [
       {
         "__id__": 2
@@ -62,7 +62,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -56.378,
+      "x": -400.563,
       "y": -172.797,
       "z": 0
     },
@@ -86,7 +86,7 @@
   },
   {
     "__type__": "cc.Sprite",
-    "_name": "",
+    "_name": "player<Sprite>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -226,9 +226,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "bcedf9dc-562b-4133-abb7-3a77097070b4"
+      "__id__": 0
     },
-    "fileId": "98r0ycNMRMv5YWB4qOUVf6",
+    "fileId": "44/hkekRpNxbt0gaV4Tq7Y",
     "sync": false
   }
 ]

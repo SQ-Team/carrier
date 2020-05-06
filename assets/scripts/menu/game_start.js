@@ -2,7 +2,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        headBar: {
+            type: cc.Node,
+            default: null
+        }
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -20,9 +23,14 @@ cc.Class({
     },
 
     gameStart() {
+        this.headBar.active = false;
         console.log('game start');
         window.cfg.gameInit = true;
         this.animation.play('game_start');
+        setTimeout(() => {
+            this.headBar.setPosition(0, 240, 0);
+            this.headBar.active = true;
+        }, 1000)
     },
 
     start () {

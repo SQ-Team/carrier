@@ -15,8 +15,11 @@ cc.Class({
   // onLoad () {},
 
     start () {
+        this.jumpCount = 1;
         // 获取节点上的刚体组件
         this.body = this.getComponent(cc.RigidBody);
+        this.animation = this.node.getComponent(cc.Animation);
+        this.audioSource = this.node.getComponent(cc.AudioSource);
     },
 
     subscribeEvent() {
@@ -31,9 +34,23 @@ cc.Class({
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp.bind(this), this);
     },
 
+    // 只在两个碰撞体开始接触时被调用一次
+  onBeginContact(contact, selfCollider, otherCollider) {
+    console.log('play_ctrl: ', otherCollider.node.group);
+  if (otherCollider.node.group === 'obs') {
+      this.jumpCount = 1;
+  }
+  },
+
   onPlayerJump() {
     let v = this.body.linearVelocity; // 获取当前刚体的速度
-    v.y += 300;
+    if (this.jumpCount) {
+        if (!window.cfg.isMute) {
+            this.audioSource.play();
+        }
+        v.y += 300;
+        this.jumpCount --;
+    }
     this.body.linearVelocity = v;
   },
 
@@ -48,16 +65,13 @@ cc.Class({
     }
   },
 
-    // 只在两个碰撞体开始接触时被调用一次
-    onBeginContact(contact, selfCollider, otherCollider) {
-        this.body.linearVelocity = cc.v2(0, 0);
-        // this.canWalk = false;
+    onDestroy() {
         this.unSubscribeEvent();
     },
 
   onPlayerWalk() {
     let v = this.body.linearVelocity; // 获取当前刚体的速度
-    v.x = 100 * this.direction;
+    v.x = 200 * this.direction;
     this.body.linearVelocity = v;
     this.node.scaleX =  this.direction;
   },
@@ -79,6 +93,7 @@ cc.Class({
         if (camera_pos.x + cc.winSize.width / 2 >= npc_pos.x - this.node.width) {
             if (this.playCount) {
                 this.subscribeEvent();
+                this.animation.play('walk');
                 this.playCount--;
             }
             if (this.canWalk) {
