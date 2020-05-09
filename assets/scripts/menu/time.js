@@ -16,7 +16,9 @@ cc.Class({
             default: null
         },
 
-        passingVelocity: 2 // 刷新时间
+        passingVelocity: 2, // 刷新时间
+
+        deadline: 5 // 关卡时间
     },
 
     start () {},
@@ -24,8 +26,9 @@ cc.Class({
     onLoad() {
         this.updateSecond = 0;
         this.time = this.getCurrentTime();
+        this.initTime = this.time;
         this.setTime();
-        this.setBrief(this.time, 5);
+        this.setBrief(this.time, this.deadline);
     },
     // 设置任务简介
     setBrief(time, deadline) {
@@ -46,6 +49,23 @@ cc.Class({
     setTime() {
         const time = new Date(this.time);
         this.timeLabel.string = this.timeFormat(time);
+    },
+
+    getCostTime() {
+        console.log(this.time, this.initTime, this.endTime);
+        if (this.time > this.endTime) {
+            return 0;
+        } else {
+            return this.time - this.initTime;
+        }
+    },
+
+    getGradeTime() {
+        if (this.time > this.endTime) {
+            return 0;
+        } else {
+            return this.endTime - this.time;
+        }
     },
 
 
