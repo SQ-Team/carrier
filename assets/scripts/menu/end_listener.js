@@ -5,6 +5,10 @@ cc.Class({
         label: {
             type: cc.Label,
             default: null
+        },
+        canvasNode: {
+            type: cc.Node,
+            default: null
         }
     },
 
@@ -20,6 +24,7 @@ cc.Class({
     },
     sceneChange() {
         console.log('scene change to game');
-        cc.director.loadScene('game');
+        // cc.director.loadScene('game');
+        this.canvasNode.getComponent("fade").fadeIntoWhite('game', .5);
     }
 });

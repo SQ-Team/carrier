@@ -2,12 +2,19 @@
   "assets-sort-type": "name",
   "collision-matrix": [
     [
+      true,
+      true
+    ],
+    [
+      true,
       true
     ]
   ],
   "design-resolution-height": 640,
   "design-resolution-width": 960,
   "excluded-modules": [
+    "Native Socket",
+    "Geom Utils",
     "3D",
     "3D Primitive"
   ],
@@ -24,9 +31,10 @@
   "fit-height": true,
   "fit-width": false,
   "group-list": [
-    "default"
+    "default",
+    "obs"
   ],
-  "last-module-event-record-time": 1582009422227,
+  "last-module-event-record-time": 1589264722836,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,

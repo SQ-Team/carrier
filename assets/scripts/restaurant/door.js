@@ -2,10 +2,16 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        canvasNode: {
+            type: cc.Node,
+            default: null
+        }
     },
 
-    // onLoad () {},
+    onLoad () {
+        // 渐显(和下一个场景的 渐隐 组合成过渡效果)
+        this.canvasNode.getComponent("fade").fadeFromWhite(.5);
+    },
 
     start () {},
 
@@ -18,7 +24,9 @@ cc.Class({
     },
 
     sceneChange() {
-        cc.director.loadScene(window.cfg.currentLevel);
+        this.canvasNode.zIndex = 100;
+        this.canvasNode.getComponent("fade").fadeIntoWhite(window.cfg.currentLevel, .5);
+        // cc.director.loadScene(window.cfg.currentLevel);
     }
 
     // update (dt) {},

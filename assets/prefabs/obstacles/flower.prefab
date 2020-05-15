@@ -18,7 +18,7 @@
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 1,
+    "_level": 2,
     "_components": [
       {
         "__id__": 2
@@ -34,10 +34,13 @@
       },
       {
         "__id__": 6
+      },
+      {
+        "__id__": 7
       }
     ],
     "_prefab": {
-      "__id__": 7
+      "__id__": 8
     },
     "_opacity": 255,
     "_color": {
@@ -59,7 +62,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -77.031,
+      "x": 326.788,
       "y": 350.066,
       "z": 0
     },
@@ -192,7 +195,7 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 50,
+      "width": 35.8,
       "height": 50
     },
     "_id": ""
@@ -206,7 +209,26 @@
     },
     "_enabled": true,
     "targetNode": null,
+    "slider": null,
     "playCount": 1,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.AudioSource",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_clip": {
+      "__uuid__": "3f2c7603-126b-4dd2-9035-6e75eebf5653"
+    },
+    "_volume": 0.6,
+    "_mute": false,
+    "_loop": false,
+    "playOnLoad": false,
+    "preload": false,
     "_id": ""
   },
   {

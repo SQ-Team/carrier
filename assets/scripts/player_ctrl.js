@@ -8,10 +8,15 @@ cc.Class({
     //   type: cc.Node,
     //   default: null,
     // },
-    moving: false, // 移动中
     direction: 0, // 方向
   },
-  // onLoad () {},
+    onLoad () {
+        this.moving = false;
+        this.jumpCount = 1;
+        this.playCount = 1;
+        this.animation = this.getComponent(cc.Animation);
+        this.audioSource = this.node.getComponent(cc.AudioSource);
+    },
 
     start () {
         this.direction = directionMap.NONE;
@@ -37,7 +42,23 @@ cc.Class({
 
   onPlayerJump() {
     let v = this.body.linearVelocity; // 获取当前刚体的速度
-    v.y += 300;
+    // if (Math.floor(this.node.position.y) <= -170) {
+    //     if (!window.cfg.isMute) {
+    //         this.audioSource.play();
+    //     }
+    //     if (this.node.position.y > -60) {
+    //         v.y = 0;
+    //     } else {
+    //         v.y += 300;
+    //     }
+    // }
+    if (this.jumpCount) {
+        if (!window.cfg.isMute) {
+            this.audioSource.play();
+        }
+        v.y += 300;
+        this.jumpCount --;
+    }
     this.body.linearVelocity = v;
   },
 
@@ -57,11 +78,23 @@ cc.Class({
     default:
       break;
     }
+    if (this.playCount) {
+        this.animation.play('walk');
+        this.playCount--;
+    }
   },
 
+  // 只在两个碰撞体开始接触时被调用一次
+  onBeginContact(contact, selfCollider, otherCollider) {
+      console.log('play_ctrl: ', otherCollider.node.group);
+    if (otherCollider.node.group === 'obs') {
+        this.jumpCount = 1;
+    }
+},
+
   onPlayerWalk(dir) {
+      let v = this.body.linearVelocity; // 获取当前刚体的速度
       if (this.moving) {
-        let v = this.body.linearVelocity; // 获取当前刚体的速度
         v.x = 100 * dir;
         this.body.linearVelocity = v;
     }
@@ -81,6 +114,8 @@ cc.Class({
       this.direction = directionMap.NONE;
       break;
     }
+    this.animation.play('stand');
+    this.playCount = 1;
   },
 
   update (dt) {
